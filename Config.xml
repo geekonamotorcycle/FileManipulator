@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="sourcebasepath" value="C:\Users\joshp\OneDrive\Pictures\" />
+    <add key="destinationbase" value="J:\desttest" />
+    <add key="CopyMove" value="move" />
+    <add key="CreationModified" value="creation" />
+    <add key="GetHash" value="true" />
+    <add key="Recurse" value="false" />
+  </appSettings>
+</configuration>

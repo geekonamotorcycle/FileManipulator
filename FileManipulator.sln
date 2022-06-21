@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManipulator", "FileManipulator.csproj", "{F067E4A1-84B4-424C-9188-8E230E79AD79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F067E4A1-84B4-424C-9188-8E230E79AD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F067E4A1-84B4-424C-9188-8E230E79AD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F067E4A1-84B4-424C-9188-8E230E79AD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F067E4A1-84B4-424C-9188-8E230E79AD79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C02F005A-79F0-43BD-81A2-1E8083D8B6D4}
+	EndGlobalSection
+EndGlobal
