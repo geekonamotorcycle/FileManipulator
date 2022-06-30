@@ -1,24 +1,16 @@
-﻿using System;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FileManipulator
+﻿namespace FileManipulator.Classes
 {
-    internal class GatherSourcePaths
+    internal class Get_SourcePaths
     {
         //  Properties
         public string sourcebasepath = @"";
         //  Constructor
-        public GatherSourcePaths(string sourcebasepath) 
+        public Get_SourcePaths(string sourcebasepath)
         {
             this.sourcebasepath = sourcebasepath;
             if (Directory.Exists(this.sourcebasepath))
             {
-                string[] filenames   =  Directory.GetFiles(this.sourcebasepath);
+                string[] filenames = Directory.GetFiles(this.sourcebasepath);
             }
             else
             {
@@ -32,15 +24,15 @@ namespace FileManipulator
         //  methods
         public string[] Geteresults()
         {
-            if (Directory.Exists(this.sourcebasepath))
+            if (Directory.Exists(sourcebasepath))
             {
-                string[] filenames = Directory.GetFiles(this.sourcebasepath);
+                string[] filenames = Directory.GetFiles(sourcebasepath);
                 return filenames;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("The base path of " + this.sourcebasepath + " is not a valid path");
+                Console.WriteLine("The base path of " + sourcebasepath + " is not a valid path");
                 Console.ResetColor();
                 throw new InvalidDataException("Invalid Source Base Path");
             }
@@ -48,12 +40,12 @@ namespace FileManipulator
         }
         public string[] Writeresults()
         {
-            if (Directory.Exists(this.sourcebasepath))
+            if (Directory.Exists(sourcebasepath))
             {
-                string[] filenames = Directory.GetFiles(this.sourcebasepath);
+                string[] filenames = Directory.GetFiles(sourcebasepath);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Path Passed in is: " + this.sourcebasepath);
-                Console.WriteLine("number of files found: " + filenames.Count() +"\n");
+                Console.WriteLine("Path Passed in is: " + sourcebasepath);
+                Console.WriteLine("number of files found: " + filenames.Count() + "\n");
                 foreach (string filename in filenames)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -65,7 +57,7 @@ namespace FileManipulator
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("The base path of " + this.sourcebasepath + " is not a valid path");
+                Console.WriteLine("The base path of " + sourcebasepath + " is not a valid path");
                 Console.ResetColor();
                 throw new InvalidDataException("Invalid Source Base Path");
             }
