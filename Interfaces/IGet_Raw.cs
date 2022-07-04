@@ -4,7 +4,5 @@
     {
         string SourcePath { get; set; }
         bool IsRaw{ get; }
-
-        
     }
 }

@@ -18,10 +18,8 @@ namespace FileManipulator
             this.FilePath = FilePath;
             ReturnMD5();
         }
-
         private void ReturnMD5()
         {
-
             MD5 md5 = MD5.Create();
             var stream = File.OpenRead(FilePath);
             MD5Value = BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);

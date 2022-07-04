@@ -13,11 +13,9 @@ namespace FileManipulator
         public string SourceFileName { get; set; } = string.Empty;
         public string DesitnationBase { get; set; } = string.Empty;
         public bool IsRaw { get; set; }
-
         public DateTime EXCreationDate { get; set; }
         public DateTime FSCreationDate { get; set; }
         public DateTime FSLastWriteDate { get; set; }
-
         public string ExifOriginalDateDestination { get; private set; } = string.Empty;
         public string FSCreationDateDestination { get; private set; } = string.Empty;
         public string FSLastWriteDateDestination { get; private set; } = string.Empty;

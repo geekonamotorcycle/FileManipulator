@@ -2,60 +2,29 @@
 {
     internal class CheckExists
     {
-        public bool CheckDirectory(string DirectoryPath, bool verbose = false)
+        public bool CheckDirectory(string DirectoryPath)
         {
             if (Directory.Exists(DirectoryPath))
             {
-                if (verbose)
-                {
-                    Console.WriteLine($"The directory at {DirectoryPath} does exist");
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             else
             {
-                if (verbose)
-                {
-                    Console.WriteLine($"The directory at {DirectoryPath} does NOT exist");
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return false;
             }
         }
-        public static bool CheckFile(string filePath, bool verbose = false)
+        public static bool CheckFile(string filePath)
         {
             if (File.Exists(filePath))
             {
-                if (verbose)
-                {
-                    Console.WriteLine($"The file at {filePath} does exist");
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             else
             {
-                if (verbose)
-                {
-                    Console.WriteLine($"The file at {filePath} does NOT exist");
-                    return false;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
         }
-
     }
+
 }
+

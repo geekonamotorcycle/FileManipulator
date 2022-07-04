@@ -16,13 +16,13 @@ namespace FileManipulator.Classes
             CheckExists checker = new();
             do
             {
-                Console.Clear();
-                Console.ResetColor();
+                //Header
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(
                     $"**************************\n" +
                     $"Media Organizer\n" +
                     $"**************************\n");
+                //Status Check
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(
                     $"The JSON source path is \"{settings.SourcePath}\"\n" +
@@ -32,17 +32,17 @@ namespace FileManipulator.Classes
                 Console.WriteLine($"The JSON date source is: \"{settings.DateSource}\"\n");
                 Console.WriteLine($"The SQLite connection string: \"{settings.ConnectionString}\"");
                 Console.WriteLine($"The SQLite provider name \"{settings.ProviderName}\"\n");
+                //Available Selections
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(
                     $"Enter one of the following options and press enter\n" +
                     $"\"1\" to read the ingest path and output file information to the screen In JSON Format\n" +
                     $"\"2\" to read the ingest path and output a CSV with file information\n" +
-                    $"\"3\" to read the injest path and output to the Debug DB\n" +
-                    $"\"4\" to read the Debug DB and output its contents in JSON Format to the console\n" +
+                    $"\"3\" to injest failes and output to the DB\n" +
+                    $"\"4\" to read the DB and output its contents in JSON Format to the console\n" +
                     $"\"Exit\" to exit this menu application");
-
-                switch (Console.ReadLine()
-                               .ToLower())
+                //switch logic
+                switch (Console.ReadLine().ToLower())
                 {
                     case "1":
                         Console.ResetColor();
@@ -55,7 +55,7 @@ namespace FileManipulator.Classes
                     case "3":
                         Console.ResetColor();
                         Write_SQLite SQLtesting = new();
-                        SQLtesting.CheckSQLiteConnection();
+                        SQLtesting.TestSQLiteConnection();
                         break;
                     case "4":
                         Console.ResetColor();

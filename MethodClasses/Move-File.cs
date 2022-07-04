@@ -2,7 +2,6 @@
 {
     internal class Move_File
     {
-
         public string SourcePath { get; set; } = string.Empty;
         public string DestinationPath { get; set; } = string.Empty;
         private string PathOnly { get; set; } = string.Empty;
@@ -10,7 +9,6 @@
 
         public Move_File(List<FileInformationModel> paths)
         {
-
             foreach (var item in paths)
             {
                 this.SourcePath = item.SourcePath;
@@ -97,7 +95,6 @@
                     throw;
                 }
             }
-
         }
         private void CreatePath()
         {

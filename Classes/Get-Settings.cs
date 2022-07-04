@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-
 namespace FileManipulator
 {
     internal class Get_Settings
@@ -11,8 +10,7 @@ namespace FileManipulator
         public string CSVExportPath { get; private set; } = string.Empty;
         public string ConnectionString { get; private set; } = string.Empty;
         public string ProviderName { get; private set; } = string.Empty;
-
-
+        
         public Get_Settings()
         {
             GetSettings();

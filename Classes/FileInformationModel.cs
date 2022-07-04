@@ -64,7 +64,7 @@ namespace FileManipulator
         {
             try
             {
-                Get_Settings get_Settings = new Get_Settings();
+                Get_Settings get_Settings = new();
                 DateSource = get_Settings.DateSource;
             }
             catch (Exception e)

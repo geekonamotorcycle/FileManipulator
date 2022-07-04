@@ -8,57 +8,19 @@ namespace FileManipulator
     {
         public Output_Screen()
         {
-            /*DateTime StartTime = DateTime.Now;
-            Get_Settings fileinfosettings = new();
-            string destpath = fileinfosettings.DestinationBase;
-            Get_SourcePaths filegatherer = new(fileinfosettings.SourcePath);
-            CheckExists checker = new();
-            bool BaseDestExists = checker.CheckDirectory(destpath);
-            List<FileInformationModel> files = new();
-            Console.ResetColor();
-            */
-            Gather_Files_Create_Models files2 = new();
-            List<FileInformationModel> files3 = files2.Files();
+            Gather_Files_Create_Models gather_Files_Create_Model = new();
+            List<FileInformationModel> models = gather_Files_Create_Model.Files();
 
-            foreach (var item in files3)
+            foreach (var item in models)
             {
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(item, options);
                 Console.WriteLine(jsonString);
             }
-
-
-/*            foreach (var path in filegatherer.Geteresults())
-            {
-                bool SourceFileExists = CheckExists.CheckFile(path);
-                if (SourceFileExists && BaseDestExists)
-                {
-                    FileInformationModel FileInfoObject = new(path, destpath);
-                    var options = new JsonSerializerOptions { WriteIndented = true };
-                    string jsonString = JsonSerializer.Serialize(FileInfoObject, options);
-                    Console.WriteLine(jsonString);
-                    files.Add(FileInfoObject);
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("One of the paths failed to check");
-                    Console.ResetColor();
-                }
-
-            }
-
-            */
             Console.ResetColor();
             Console.WriteLine("Press Any Key to return to the main menu");
             Console.ReadKey();
-
         }
-        /*Console.ForegroundColor = ConsoleColor.Yellow;
-        DateTime EndTime = DateTime.Now;
-        TimeSpan TotalTime = EndTime.Subtract(StartTime);
-        Console.WriteLine($"\n\nThat took \"{TotalTime}\" to run. on {files.Count} files");
-        Console.WriteLine("Press Any Key to return to the main menu");
-        Console.ReadKey();*/
+
     }
 }

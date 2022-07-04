@@ -10,7 +10,6 @@ namespace FileManipulator
 {
     internal class Output_DBContentsToScreen
     {
-        public List<PublicFileInformationModel> SQLDump { get; private set; }
         public Output_DBContentsToScreen()
         {
             List<PublicFileInformationModel> SQLDump = new List<PublicFileInformationModel>();

@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using FileManipulator.Classes;
 using System.Data;
 using System.Data.SQLite;
 
@@ -9,23 +8,21 @@ namespace FileManipulator.MethodClasses
     {
         private string DBConnectionString { get; set; }
         private string DBProviderString { get; set; }
-
         public Write_SQLite()
         {
-
             try
             {
                 Get_Settings get_Settings = new();
                 DBConnectionString = get_Settings.ConnectionString;
                 DBProviderString = get_Settings.ProviderName;
-                if (!File.Exists(get_Settings.ConnectionString))
+                if (File.Exists(get_Settings.ConnectionString) == false)
                 {
                     Console.WriteLine("The Database Exists");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("The Database Exists");
+                    Console.WriteLine("The Database Does not Exists");
                     Console.ResetColor();
                 }
 
@@ -38,16 +35,13 @@ namespace FileManipulator.MethodClasses
                 throw;
             }
         }
-
         public List<PublicFileInformationModel> GetDBContents()
         {
             try
             {
-                using (IDbConnection DBConn = new SQLiteConnection(DBConnectionString))
-                {
-                    var output = DBConn.Query<PublicFileInformationModel>("select * from FileRecords", new DynamicParameters());
-                    return output.ToList();
-                }
+                using IDbConnection DBConn = new SQLiteConnection(DBConnectionString);
+                var output = DBConn.Query<PublicFileInformationModel>("select * from FileRecords", new DynamicParameters());
+                return output.ToList();
             }
             catch (Exception e)
             {
@@ -57,7 +51,6 @@ namespace FileManipulator.MethodClasses
                 throw;
             }
         }
-
         public void WriteToDB(FileInformationModel DataToWrite)
         {
             try
@@ -75,40 +68,15 @@ namespace FileManipulator.MethodClasses
                 throw;
             }
         }
-
-        public void CheckSQLiteConnection()
+        public void TestSQLiteConnection()
         {
+            Gather_Files_Create_Models gather_Files_Create_Models = new();
+            List<FileInformationModel> models = gather_Files_Create_Models.Files();
             try
             {
-                Get_Settings fileinfosettings = new();
-                string destpath = fileinfosettings.DestinationBase;
-                Get_SourcePaths filegatherer = new(fileinfosettings.SourcePath);
-                CheckExists checker = new();
-                bool BaseDestExists = checker.CheckDirectory(destpath);
-                List<FileInformationModel> files = new();
-
-                foreach (var path in filegatherer.Geteresults())
+                foreach (var item in models)
                 {
-                    bool SourceFileExists = CheckExists.CheckFile(path);
-                    if (SourceFileExists && BaseDestExists)
-                    {
-                        FileInformationModel FileInfoObject = new(path, destpath);
-                        files.Add(FileInfoObject);
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("One of the paths failed to check");
-                        Console.ResetColor();
-                    }
-
-                }
-                foreach (var item in files)
-                {
-                    using (IDbConnection DBConn = new SQLiteConnection(DBConnectionString))
-                        DBConn.Execute("insert into FileRecords (SourcePath,FileName,FilExtension,IsRAW,MD5FileHash,DateSource,FSCreatedDate,FSModifiedDate," +
-                            "ExifOrigDate,DestinationBase,EXIFdestpath,FSCreatedDestPath,FSModifiedDestPath,FileMoved) values (@SourcePath,@FileName,@FilExtension,@IsRAW," +
-                            "@MD5FileHash,@DateSource,@FSCreatedDate,@FSModifiedDate,@ExifOrigDate,@DestinationBase,@EXIFdestpath,@FSCreatedDestPath,@FSModifiedDestPath,@FileMoved)", item);
+                    WriteToDB(item);
                 }
             }
             catch (Exception e)

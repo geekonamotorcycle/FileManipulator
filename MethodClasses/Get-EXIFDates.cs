@@ -14,7 +14,6 @@ namespace FileManipulator
     {
         public string sourcepath { get; set; } = string.Empty;
         public DateTime ReturnedDateTime { get; private set; }
-
         public Get_EXIFDates(string sourcepath)
         {
             GetDateTimeOriginal(sourcepath);
@@ -42,7 +41,6 @@ namespace FileManipulator
                             }
                         }
                     }
-
                     ReturnedDateTime = DateTime.Parse("01/01/1970");
                     return ReturnedDateTime;
                 }
