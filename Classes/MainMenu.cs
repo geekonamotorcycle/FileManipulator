@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileManipulator.MethodClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,47 +12,65 @@ namespace FileManipulator.Classes
         public MainMenu()
         {
             bool showmenu = true;
-            Settings settings = new();
+            Get_Settings settings = new();
             CheckExists checker = new();
             do
             {
                 Console.Clear();
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(
-                    $"*********************\n" +
-                    $"This is the Main Menu\n" +
-                    $"*********************\n\n");
+                    $"**************************\n" +
+                    $"Media Organizer\n" +
+                    $"**************************\n");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(
-                    $"The JSON Source Path is \"{settings.SourcePath}\"\n" +
-                    $"Source Path exists: {checker.CheckDirectory(settings.SourcePath)}\n");
-                    Console.WriteLine("\n" +
-                    $"The JSON Destination Base is: \"{settings.DestinationBase}\"\n" +
+                    $"The JSON source path is \"{settings.SourcePath}\"\n" +
+                    $"Source path exists: {checker.CheckDirectory(settings.SourcePath)}\n");
+                Console.WriteLine($"The JSON destination base is: \"{settings.DestinationBase}\"\n" +
                     $"Destination Path exists: {checker.CheckDirectory(settings.DestinationBase)}\n");
-                    Console.WriteLine($"\n" +
-                    $"The JSON Date Source is: \"{settings.DateSource}\"\n");
+                Console.WriteLine($"The JSON date source is: \"{settings.DateSource}\"\n");
+                Console.WriteLine($"The SQLite connection string: \"{settings.ConnectionString}\"");
+                Console.WriteLine($"The SQLite provider name \"{settings.ProviderName}\"\n");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(
-                    $"Type in \"Test\" to run the test object\n" +
-                    $"Type in \"Exit\" to exit this menu");
+                    $"Enter one of the following options and press enter\n" +
+                    $"\"1\" to read the ingest path and output file information to the screen In JSON Format\n" +
+                    $"\"2\" to read the ingest path and output a CSV with file information\n" +
+                    $"\"3\" to read the injest path and output to the Debug DB\n" +
+                    $"\"4\" to read the Debug DB and output its contents in JSON Format to the console\n" +
+                    $"\"Exit\" to exit this menu application");
 
                 switch (Console.ReadLine()
                                .ToLower())
                 {
-                    case "test":
-                        Testing _ = new();
+                    case "1":
+                        Console.ResetColor();
+                        Output_Screen _ = new();
+                        break;
+                    case "2":
+                        Console.ResetColor();
+                        Output_CSV output_CSV = new();
+                        break;
+                    case "3":
+                        Console.ResetColor();
+                        Write_SQLite SQLtesting = new();
+                        SQLtesting.CheckSQLiteConnection();
+                        break;
+                    case "4":
+                        Console.ResetColor();
+                        Output_DBContentsToScreen DBScreenOutput = new();
                         break;
                     case "exit":
                         showmenu = false;
                         break;
                     default:
-                        Console.WriteLine($"You Failed");
+                        Console.ResetColor();
+                        Console.WriteLine($"Your entry was not valid");
                         Console.Write("Press any key to try again");
                         Console.ReadKey();
                         break;
                 }
-                // Wait for the user to respond before closing.
-
             } while (showmenu);
         }
     }

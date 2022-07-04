@@ -2,7 +2,6 @@
 {
     internal class CheckExists
     {
-
         public bool CheckDirectory(string DirectoryPath, bool verbose = false)
         {
             if (Directory.Exists(DirectoryPath))
@@ -16,7 +15,6 @@
                 {
                     return true;
                 }
-
             }
             else
             {
@@ -31,7 +29,7 @@
                 }
             }
         }
-        public bool CheckFile(string filePath, bool verbose = false)
+        public static bool CheckFile(string filePath, bool verbose = false)
         {
             if (File.Exists(filePath))
             {
@@ -44,7 +42,6 @@
                 {
                     return true;
                 }
-
             }
             else
             {

@@ -8,7 +8,8 @@ namespace FileManipulator
 
         static void Main(string[] args)
         {
-            MainMenu test = new();
+            MainMenu mainMenu = new();
+
         }
     }
 
