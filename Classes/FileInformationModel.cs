@@ -1,4 +1,62 @@
-﻿using FileManipulator.Interfaces;
+﻿/*
+ * FILE: FileInformationModel.cs
+ * 
+ * DESCRIPTION:
+ * This file contains the core data model used throughout the application to represent
+ * media files and their metadata. It's responsible for gathering and storing all 
+ * information about a file that will be used for organization and reporting.
+ * 
+ * PLANNED IMPROVEMENTS:
+ * 
+ * 1. ERROR HANDLING
+ *    - Replace direct exception throwing with a more robust error handling strategy
+ *    - Implement a result pattern that returns success/failure with error details
+ *    - Example: 
+ *      public class Result<T> {
+ *          public bool Success { get; set; }
+ *          public string ErrorMessage { get; set; }
+ *          public T Data { get; set; }
+ *      }
+ *    
+ * 2. CONSTRUCTOR REFACTORING
+ *    - Split the large constructor into smaller, focused methods
+ *    - Implement dependency injection to make testing easier
+ *    - Remove direct instantiation of services within the constructor
+ *    
+ * 3. VALIDATION
+ *    - Add input validation for paths and other critical parameters
+ *    - Implement data annotations or a validation library
+ *    - Add property constraints (e.g., required fields, string length limits)
+ *    
+ * 4. ASYNC SUPPORT
+ *    - Refactor file operations to be async for better performance
+ *    - Implement Task-based methods for IO-bound operations
+ *    - Example: public async Task<bool> GetFileExtensionAsync()
+ *    
+ * 5. IMPROVED LOGGING
+ *    - Replace Console.WriteLine calls with a proper logging framework
+ *    - Log at appropriate levels (debug, info, warning, error)
+ *    - Include contextual information in log messages
+ *    
+ * 6. EXTENDED METADATA
+ *    - Add support for additional metadata (camera model, GPS, etc.)
+ *    - Implement optional metadata fields that don't cause failures if missing
+ *    - Add capability to extract and store IPTC and XMP metadata
+ *    
+ * 7. IMMUTABILITY
+ *    - Consider making the model immutable after construction
+ *    - Use the builder pattern for complex object creation
+ *    - Protect internal state from unexpected modifications
+ *    
+ * 8. SERIALIZATION IMPROVEMENTS
+ *    - Add serialization attributes for better JSON/XML control
+ *    - Implement custom serialization for complex types
+ *    - Handle circular references properly
+ */
+
+// Current code remains unchanged, these notes are for documentation purposes only
+
+using FileManipulator.Interfaces;
 
 namespace FileManipulator
 {

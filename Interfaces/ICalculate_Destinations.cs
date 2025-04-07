@@ -3,7 +3,7 @@
     internal interface ICalculate_Destinations
     {
         DateTime DefaultDate { get; }
-        bool IsRaw  { get; set; }
+        bool IsRaw { get; set; }
         string DesitnationBase { get; set; }
         DateTime EXCreationDate { get; set; }
         string ExifOriginalDateDestination { get; }
