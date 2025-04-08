@@ -58,6 +58,10 @@ This application solves the common problem of organizing large collections of me
 
 ## Getting Started
 
+**Be warned, this code may not be functional as is**
+
+I started this project a few years ago and stashed it in Git, I only picked it back up in 2025 because some of its bones became relevant for a new project. I will be updating this with a working version shortly.
+
 ### Requirements
 
 - .NET 6.0 or higher
